@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfguu3riet552"]
+
+[ext_resource type="Script" path="res://Objects/swarm_enemy.gd" id="1_8nsnk"]
+[ext_resource type="Texture2D" uid="uid://bcr0jhmofs6yk" path="res://Assets/Art/Tilemap/SwarmStandin.png" id="1_subdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvw1y"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge5at"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7dfi"]
+size = Vector2(1, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2x4u"]
+size = Vector2(1, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuum2"]
+size = Vector2(14, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcgox"]
+size = Vector2(14, 1)
+
+[node name="swarmEnemy" type="CharacterBody2D" groups=["swarm"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_8nsnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_subdj")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["swarm"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tvw1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ge5at")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-7.5, 0)
+shape = SubResource("RectangleShape2D_j7dfi")
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_h2x4u")
+
+[node name="Up" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_iuum2")
+
+[node name="Down" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_xcgox")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="Up" to="." method="_on_up_body_entered"]
+[connection signal="body_entered" from="Down" to="." method="_on_down_body_entered"]

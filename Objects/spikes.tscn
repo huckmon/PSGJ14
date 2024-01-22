@@ -1,0 +1,351 @@
+[gd_scene load_steps=48 format=3 uid="uid://dat407rq47iw"]
+
+[ext_resource type="Script" path="res://Objects/spikes.gd" id="1_j3t1q"]
+[ext_resource type="Texture2D" uid="uid://7iv0qhtv5wbp" path="res://Assets/Art/Objects/floor_spikes_anim.png" id="2_la000"]
+[ext_resource type="AudioStream" uid="uid://b7jemrx1hkrnk" path="res://Assets/audio/spike_sound.wav" id="3_72lox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcdfp"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx2rv"]
+size = Vector2(8, 10)
+
+[sub_resource type="Animation" id="Animation_gdh0y"]
+resource_name = "spikes_activated"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.17, 0.21, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_vcax2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_iayiu"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a6f1m"]
+resource_name = "spikes_retract"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.17, 0.21, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_tae6h"]
+resource_name = "spikes_retract_2"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.15, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_sw5pp"]
+resource_name = "Idle_extended"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_7iv3o"]
+resource_name = "spikes_activated_2"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_8sc1p"]
+resource_name = "kill"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 8, 7, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p617h"]
+_data = {
+"Idle": SubResource("Animation_iayiu"),
+"Idle_extended": SubResource("Animation_sw5pp"),
+"RESET": SubResource("Animation_vcax2"),
+"kill": SubResource("Animation_8sc1p"),
+"spikes_activated": SubResource("Animation_gdh0y"),
+"spikes_activated_2": SubResource("Animation_7iv3o"),
+"spikes_retract": SubResource("Animation_a6f1m"),
+"spikes_retract_2": SubResource("Animation_tae6h")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sk286"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s7p2n"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2cpw3"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b2rnc"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_hrrjk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_sk286")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_s7p2n")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_2cpw3")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_b2rnc")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_st16n"]
+animation = &"Idle_extended"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f7tp7"]
+animation = &"Idle_extended"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3cl3v"]
+animation = &"Idle_extended"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ttb1"]
+animation = &"Idle_extended"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_hco11"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_st16n")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_f7tp7")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_3cl3v")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_7ttb1")
+blend_point_3/pos = Vector2(-1, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tubxb"]
+animation = &"kill"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uk47h"]
+animation = &"kill"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_il6tl"]
+animation = &"kill"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x78ap"]
+animation = &"kill"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bkaev"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_tubxb")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_uk47h")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_il6tl")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_x78ap")
+blend_point_3/pos = Vector2(-1, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_agicx"]
+animation = &"spikes_activated_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_582eu"]
+animation = &"spikes_activated_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ms44j"]
+animation = &"spikes_activated_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7kxqx"]
+animation = &"spikes_activated_2"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_f8s78"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_agicx")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_582eu")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ms44j")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_7kxqx")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a840f"]
+animation = &"spikes_retract_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_632qh"]
+animation = &"spikes_retract_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c3c6x"]
+animation = &"spikes_retract_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yw85m"]
+animation = &"spikes_retract_2"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_knrpo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_a840f")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_632qh")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_c3c6x")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_yw85m")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6lge7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5jdw2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e2bsu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h3pnd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0efch"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hr5ww"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_byx6d"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_hrrjk")
+states/Idle/position = Vector2(321, 100)
+states/Idle_extended/node = SubResource("AnimationNodeBlendSpace2D_hco11")
+states/Idle_extended/position = Vector2(520, 167)
+states/kill/node = SubResource("AnimationNodeBlendSpace2D_bkaev")
+states/kill/position = Vector2(383, 9)
+states/spikes_activated/node = SubResource("AnimationNodeBlendSpace2D_f8s78")
+states/spikes_activated/position = Vector2(514, 100)
+states/spikes_retracting/node = SubResource("AnimationNodeBlendSpace2D_knrpo")
+states/spikes_retracting/position = Vector2(321, 176)
+transitions = ["Idle", "spikes_activated", SubResource("AnimationNodeStateMachineTransition_6lge7"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5jdw2"), "spikes_activated", "Idle_extended", SubResource("AnimationNodeStateMachineTransition_e2bsu"), "Idle_extended", "spikes_retracting", SubResource("AnimationNodeStateMachineTransition_h3pnd"), "spikes_retracting", "Idle", SubResource("AnimationNodeStateMachineTransition_0efch"), "spikes_activated", "kill", SubResource("AnimationNodeStateMachineTransition_hr5ww")]
+graph_offset = Vector2(-116, -27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3c0v"]
+size = Vector2(8, 10)
+
+[node name="spikes" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_j3t1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_la000")
+hframes = 9
+
+[node name="spike_activation" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike_activation"]
+shape = SubResource("RectangleShape2D_gcdfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sx2rv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p617h")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p617h")
+}
+tree_root = SubResource("AnimationNodeStateMachine_byx6d")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Idle_extended/blend_position = Vector2(0, 0)
+parameters/kill/blend_position = Vector2(-0.00125784, 0.0132158)
+parameters/spikes_activated/blend_position = Vector2(0, 0)
+parameters/spikes_retracting/blend_position = Vector2(0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="kill_box" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_box"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_f3c0v")
+
+[node name="spike_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_72lox")
+
+[connection signal="body_entered" from="spike_activation" to="." method="_on_spike_activation_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="kill_box" to="." method="_on_kill_box_body_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfguu3riet552"]
+
+[ext_resource type="Script" path="res://Objects/swarm_enemy.gd" id="1_8nsnk"]
+[ext_resource type="Texture2D" uid="uid://bcr0jhmofs6yk" path="res://Assets/Art/Tilemap/SwarmStandin.png" id="1_subdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvw1y"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge5at"]
+size = Vector2(16, 16)
+
+[node name="swarmEnemy" type="CharacterBody2D" groups=["swarm"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8nsnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_subdj")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["swarm"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tvw1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ge5at")
+
+[node name="Timer" type="Timer" parent="."]

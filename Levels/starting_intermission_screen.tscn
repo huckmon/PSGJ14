@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://crxuoxstkekqf"]
+
+[ext_resource type="Script" path="res://Levels/starting_intermission_screen.gd" id="1_rsjx8"]
+[ext_resource type="Script" path="res://Levels/flash_text.gd" id="2_nmixv"]
+
+[node name="starting_intermission_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rsjx8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -15.5
+offset_right = 80.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ESCAPE THE SWARM"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -64.0
+offset_right = 67.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FIND THE STAIRS"
+
+[node name="flash_text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = 96.0
+offset_right = 115.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press any button to continue"
+script = ExtResource("2_nmixv")
+
+[node name="intermission_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="intermission_timer" to="." method="_on_intermission_timer_timeout"]

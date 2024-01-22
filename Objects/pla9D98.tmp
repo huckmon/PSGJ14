@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdeukbqo2xeb0"]
+
+[ext_resource type="Texture2D" uid="uid://bsuch7d40yrff" path="res://Assets/Art/Characters/CharacterStandin.png" id="1_e4ung"]
+[ext_resource type="Script" path="res://Objects/player.gd" id="1_s4nj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpstb"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeec2"]
+size = Vector2(14, 10)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s4nj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e4ung")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fpstb")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_eeec2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

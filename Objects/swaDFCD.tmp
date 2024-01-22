@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjcumeitpsgaf"]
+
+[ext_resource type="Script" path="res://Objects/swarm_circle.gd" id="1_k00ng"]
+[ext_resource type="Texture2D" uid="uid://bcr0jhmofs6yk" path="res://Assets/Art/Tilemap/SwarmStandin.png" id="2_xir7j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7v02"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vehk5"]
+radius = 7.0
+
+[node name="swarm_circle" type="CharacterBody2D"]
+script = ExtResource("1_k00ng")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xir7j")
+hframes = 2
+
+[node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+shape = SubResource("CircleShape2D_j7v02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vehk5")
+
+[node name="spawn_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
