@@ -1,0 +1,148 @@
+[gd_scene load_steps=23 format=3 uid="uid://d1k677sekqj7w"]
+
+[ext_resource type="Script" path="res://Objects/enemy.gd" id="1_18511"]
+[ext_resource type="Texture2D" uid="uid://cmcrh5detdhvl" path="res://Assets/Art/Characters/enemy.png" id="2_ejskk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nf433"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crfxu"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_beye5"]
+radius = 56.0357
+
+[sub_resource type="Animation" id="Animation_bo5qf"]
+resource_name = "dormant"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wdfct"]
+resource_name = "detection"
+length = 0.38
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 0, 2, 0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kt61w"]
+_data = {
+"detection": SubResource("Animation_wdfct"),
+"dormant": SubResource("Animation_bo5qf")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6n4h5"]
+animation = &"detection"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m5tay"]
+animation = &"detection"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e6ygy"]
+animation = &"detection"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_trtsa"]
+animation = &"detection"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_laadc"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6n4h5")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_m5tay")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_e6ygy")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_trtsa")
+blend_point_3/pos = Vector2(0, -1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6aa20"]
+animation = &"dormant"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7g41d"]
+animation = &"dormant"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ph0dx"]
+animation = &"dormant"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46ihc"]
+animation = &"dormant"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_s8gmx"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6aa20")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_7g41d")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ph0dx")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_46ihc")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4naat"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p7l8u"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g0okn"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c8ysl"]
+states/detection/node = SubResource("AnimationNodeBlendSpace2D_laadc")
+states/detection/position = Vector2(547, 100)
+states/domant/node = SubResource("AnimationNodeBlendSpace2D_s8gmx")
+states/domant/position = Vector2(376, 100)
+transitions = ["Start", "domant", SubResource("AnimationNodeStateMachineTransition_4naat"), "domant", "detection", SubResource("AnimationNodeStateMachineTransition_p7l8u"), "detection", "domant", SubResource("AnimationNodeStateMachineTransition_g0okn")]
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource("1_18511")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ejskk")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nf433")
+
+[node name="damage_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_hitbox"]
+shape = SubResource("CircleShape2D_crfxu")
+
+[node name="detection_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_hitbox"]
+shape = SubResource("CircleShape2D_beye5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kt61w")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kt61w")
+}
+tree_root = SubResource("AnimationNodeStateMachine_c8ysl")
+anim_player = NodePath("../AnimationPlayer")
+parameters/detection/blend_position = Vector2(-0.00251573, -0.978723)
+parameters/domant/blend_position = Vector2(0, 0)
