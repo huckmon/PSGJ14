@@ -12,6 +12,7 @@ extends CharacterBody2D
 var death_screen = "res://Levels/death_screen.tscn"
 var player_dead = false
 var input_direction
+var walking = false
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -46,8 +47,10 @@ func update_animation_parameters(move_input : Vector2):
 func pick_new_state():
 	if(velocity != Vector2.ZERO):
 		state_machine.travel("Walk")
+		walking = true
 	else:
 		state_machine.travel("Idle")
+		walking = false
 
 # swarm collision func
 # REMEMBER THAT THE SWARM TILE NEEDED THE COLLISION 2 AND THE PLAYER NEEDED MASK 2

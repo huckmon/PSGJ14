@@ -17,11 +17,23 @@ func update_level():
 	if current_floor == 2:
 		next_floor = "res://Levels/game_level_2.tscn"
 	elif current_floor == 3:
-		next_floor = "floor3"
+		next_floor = "res://Levels/game_level_3.tscn"
 	elif current_floor == 4:
-		next_floor = "floor4"
+		next_floor = "res://Levels/game_level_4.tscn"
+	elif current_floor == 5:
+		next_floor = "res://Levels/game_level_5.tscn"
+	elif current_floor == 6:
+		next_floor = "res://Levels/game_level_6.tscn"
+	elif current_floor == 7:
+		next_floor = "res://Levels/game_level_7.tscn"
+	elif current_floor == 8:
+		next_floor = "res://Levels/game_level_8.tscn"
+	elif current_floor == 9:
+		next_floor = "res://Levels/game_level_9.tscn"
+	elif current_floor == 10:
+		next_floor = "res://Levels/game_level_10.tscn"
 	#else:
-		next_floor = "procedural floor"
+		#next_floor = "procedural floor"
 
 func floor_reset():
 	score = 0

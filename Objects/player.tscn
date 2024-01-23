@@ -1,31 +1,15 @@
-[gd_scene load_steps=43 format=3 uid="uid://cdeukbqo2xeb0"]
+[gd_scene load_steps=44 format=3 uid="uid://cdeukbqo2xeb0"]
 
 [ext_resource type="Script" path="res://Objects/player.gd" id="1_s4nj4"]
 [ext_resource type="Texture2D" uid="uid://h4xok4ahktce" path="res://Assets/Art/Characters/player.png" id="2_s4wkn"]
 [ext_resource type="AudioStream" uid="uid://cea8enu5xw1rp" path="res://Assets/audio/male_hurt7-48124-echo.wav" id="3_tdllm"]
+[ext_resource type="AudioStream" uid="uid://f4v3o1ekr5jp" path="res://Assets/audio/player_walk.wav" id="4_x5t2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpstb"]
 size = Vector2(12, 16.05)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eeec2"]
 size = Vector2(14, 14)
-
-[sub_resource type="Animation" id="Animation_07hok"]
-resource_name = "idle_down"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
 
 [sub_resource type="Animation" id="Animation_3es6k"]
 length = 0.001
@@ -42,8 +26,41 @@ tracks/0/keys = {
 "values": [8]
 }
 
-[sub_resource type="Animation" id="Animation_v4k0x"]
-resource_name = "idle_up"
+[sub_resource type="Animation" id="Animation_jvyk4"]
+resource_name = "dead"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41, 42, 43, 44]
+}
+
+[sub_resource type="Animation" id="Animation_6tdpw"]
+resource_name = "dead_idle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+
+[sub_resource type="Animation" id="Animation_07hok"]
+resource_name = "idle_down"
 length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -56,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [27]
+"values": [18]
 }
 
 [sub_resource type="Animation" id="Animation_5cto2"]
@@ -93,9 +110,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_k2xi8"]
-resource_name = "walk_right"
-length = 0.6
+[sub_resource type="Animation" id="Animation_v4k0x"]
+resource_name = "idle_up"
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -104,27 +121,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3, 1, 2, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_avwcd"]
-resource_name = "walk_left"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [9, 10, 11, 12, 13, 14]
+"values": [27]
 }
 
 [sub_resource type="Animation" id="Animation_f2eni"]
@@ -143,6 +143,85 @@ tracks/0/keys = {
 "update": 1,
 "values": [18, 19, 20, 21, 22, 23, 24, 25, 26]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_x5t2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_avwcd"]
+resource_name = "walk_left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.26, 0.39, 0.52, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_x5t2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_k2xi8"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.26, 0.39, 0.52, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 1, 2, 4, 5, 6]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_x5t2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_3xanv"]
 resource_name = "walk_up"
@@ -160,39 +239,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [27, 28, 29, 30, 31, 32, 33, 34]
 }
-
-[sub_resource type="Animation" id="Animation_jvyk4"]
-resource_name = "dead"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [36, 37, 38, 39, 40, 41, 42, 43, 44]
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_walk")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_x5t2u")
+}],
+"times": PackedFloat32Array(0)
 }
-
-[sub_resource type="Animation" id="Animation_6tdpw"]
-resource_name = "dead_idle"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [44]
-}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xsxqb"]
 _data = {
@@ -352,6 +413,8 @@ shape = SubResource("RectangleShape2D_eeec2")
 [node name="hurt_player" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_tdllm")
 volume_db = 3.193
+
+[node name="player_walk" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

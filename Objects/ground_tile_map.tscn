@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh6827lvm2u6r"]
+
+[ext_resource type="Texture2D" uid="uid://84rjmmwqqwo" path="res://Assets/Art/Tilemap/ground.png" id="1_f2112"]
+[ext_resource type="Texture2D" uid="uid://o1a0078yagbk" path="res://Assets/Art/Tilemap/GroundTilemapStandin.png" id="2_38osw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13lgn"]
+texture = ExtResource("1_f2112")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_758cl"]
+texture = ExtResource("2_38osw")
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_epcjv"]
+sources/2 = SubResource("TileSetAtlasSource_758cl")
+sources/0 = SubResource("TileSetAtlasSource_13lgn")
+
+[node name="GroundTileMap" type="TileMap"]
+tile_set = SubResource("TileSet_epcjv")
+format = 2
+layer_0/name = "ground_layer"
+layer_0/z_index = -5
+metadata/_edit_lock_ = true

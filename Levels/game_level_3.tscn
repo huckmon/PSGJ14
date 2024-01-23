@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbp1rlcql1vn8"]
+
+[ext_resource type="PackedScene" uid="uid://dh6827lvm2u6r" path="res://Objects/ground_tile_map.tscn" id="1_0ttq4"]
+[ext_resource type="PackedScene" uid="uid://bgkq87awhvk0s" path="res://Objects/wall_tile_map.tscn" id="2_lv0p0"]
+[ext_resource type="PackedScene" uid="uid://bv4g1y5p13233" path="res://Objects/staircase.tscn" id="5_ujtmc"]
+[ext_resource type="PackedScene" uid="uid://cdeukbqo2xeb0" path="res://Objects/player.tscn" id="6_fjsah"]
+
+[node name="game_level_3" type="Node2D"]
+
+[node name="GroundTileMap" parent="." instance=ExtResource("1_0ttq4")]
+
+[node name="WallTileMap" parent="." instance=ExtResource("2_lv0p0")]
+
+[node name="Staircase" parent="." instance=ExtResource("5_ujtmc")]
+z_index = -4
+position = Vector2(2040, 8)
+
+[node name="Player" parent="." instance=ExtResource("6_fjsah")]
+position = Vector2(-77, 0)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D2")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(-77, 0)
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
