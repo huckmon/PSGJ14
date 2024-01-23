@@ -5,9 +5,10 @@ extends Control
 var game_level = "res://Levels/game_level.tscn"
 
 func _ready():
-	score.text = "Score: " + str(global_script.score)
+	score.text = "FINAL SCORE: " + str(global_script.score)
 
 func _on_retry_button_pressed():
+	global_script.floor_reset()
 	get_tree().change_scene_to_file(game_level)
 
 func _on_quit_button_pressed():

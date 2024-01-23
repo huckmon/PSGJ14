@@ -23,6 +23,10 @@ func update_level():
 	#else:
 		next_floor = "procedural floor"
 
+func floor_reset():
+	score = 0
+	current_floor = 0
+
 #func _ready():
 	#print(score_count)
 

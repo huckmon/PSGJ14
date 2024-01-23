@@ -12,20 +12,55 @@ grow_vertical = 2
 script = ExtResource("1_siwdg")
 
 [node name="start_button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 220.0
-offset_right = 650.0
-offset_bottom = 251.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -64.0
+offset_right = 100.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Start"
+flat = true
 
 [node name="quit_button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 260.0
-offset_right = 650.0
-offset_bottom = 291.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.5
+offset_right = 100.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Quit"
+flat = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -154.0
+offset_right = 48.5
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(48.5, 11.5)
+text = "GAME NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]
