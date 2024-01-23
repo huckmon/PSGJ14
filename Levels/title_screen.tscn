@@ -57,8 +57,8 @@ offset_bottom = -131.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-pivot_offset = Vector2(48.5, 11.5)
-text = "GAME NAME"
+pivot_offset = Vector2(78, 11.5)
+text = "ESCAPE THE SWARM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
