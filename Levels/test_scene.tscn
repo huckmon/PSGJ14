@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cdeukbqo2xeb0" path="res://Objects/player.tscn" id="1_gm0e6"]
 [ext_resource type="PackedScene" uid="uid://d1k677sekqj7w" path="res://Objects/enemy.tscn" id="2_l18vc"]
-[ext_resource type="PackedScene" uid="uid://danf1m8w0kbh4" path="res://Objects/swarm_large.tscn" id="3_fqtst"]
+[ext_resource type="PackedScene" uid="uid://dat407rq47iw" path="res://Objects/spikes.tscn" id="3_rwftu"]
 
 [node name="test_scene" type="Node2D"]
 
@@ -17,7 +17,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="enemy" parent="." instance=ExtResource("2_l18vc")]
-position = Vector2(64, 5)
+position = Vector2(126, 16)
 
-[node name="swarm_large" parent="." instance=ExtResource("3_fqtst")]
-position = Vector2(-847, 8)
+[node name="spikes" parent="." instance=ExtResource("3_rwftu")]
+position = Vector2(-31, 2)

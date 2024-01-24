@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dat407rq47iw"]
+[gd_scene load_steps=47 format=3 uid="uid://dat407rq47iw"]
 
 [ext_resource type="Script" path="res://Objects/spikes.gd" id="1_j3t1q"]
 [ext_resource type="Texture2D" uid="uid://7iv0qhtv5wbp" path="res://Assets/Art/Objects/floor_spikes_anim.png" id="2_la000"]
@@ -293,9 +293,6 @@ states/spikes_retracting/position = Vector2(321, 176)
 transitions = ["Idle", "spikes_activated", SubResource("AnimationNodeStateMachineTransition_6lge7"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5jdw2"), "spikes_activated", "Idle_extended", SubResource("AnimationNodeStateMachineTransition_e2bsu"), "Idle_extended", "spikes_retracting", SubResource("AnimationNodeStateMachineTransition_h3pnd"), "spikes_retracting", "Idle", SubResource("AnimationNodeStateMachineTransition_0efch"), "spikes_activated", "kill", SubResource("AnimationNodeStateMachineTransition_hr5ww")]
 graph_offset = Vector2(-116, -27)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3c0v"]
-size = Vector2(8, 10)
-
 [node name="spikes" type="CharacterBody2D"]
 z_index = -1
 collision_layer = 8
@@ -336,16 +333,8 @@ parameters/spikes_retracting/blend_position = Vector2(0, 0)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="kill_box" type="Area2D" parent="."]
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_box"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_f3c0v")
-
 [node name="spike_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_72lox")
 
 [connection signal="body_entered" from="spike_activation" to="." method="_on_spike_activation_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="kill_box" to="." method="_on_kill_box_body_entered"]
