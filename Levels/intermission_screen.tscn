@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://fywflstxhu4h"]
+[gd_scene load_steps=4 format=3 uid="uid://fywflstxhu4h"]
 
 [ext_resource type="Script" path="res://Levels/intermission_screen.gd" id="1_8ayml"]
 [ext_resource type="Script" path="res://Levels/flash_text.gd" id="2_46tpw"]
+[ext_resource type="AudioStream" uid="uid://cesxg03281unh" path="res://Assets/audio/stairs_sound.wav" id="3_6t3k8"]
 
 [node name="intermission_screen" type="Control"]
 layout_mode = 3
@@ -62,5 +63,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press any button to continue"
 script = ExtResource("2_46tpw")
+
+[node name="stairs_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6t3k8")
 
 [connection signal="timeout" from="intermission_timer" to="." method="_on_intermission_timer_timeout"]

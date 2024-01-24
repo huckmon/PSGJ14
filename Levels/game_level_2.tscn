@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://blaahdyb1exp5"]
+[gd_scene load_steps=8 format=3 uid="uid://blaahdyb1exp5"]
 
 [ext_resource type="PackedScene" uid="uid://dh6827lvm2u6r" path="res://Objects/ground_tile_map.tscn" id="1_lgy14"]
 [ext_resource type="PackedScene" uid="uid://bgkq87awhvk0s" path="res://Objects/wall_tile_map.tscn" id="2_5v8qa"]
 [ext_resource type="PackedScene" uid="uid://bv4g1y5p13233" path="res://Objects/staircase.tscn" id="5_0cr0p"]
 [ext_resource type="PackedScene" uid="uid://cdeukbqo2xeb0" path="res://Objects/player.tscn" id="6_i1qft"]
 [ext_resource type="PackedScene" uid="uid://danf1m8w0kbh4" path="res://Objects/swarm_large.tscn" id="7_0q5c8"]
+[ext_resource type="Texture2D" uid="uid://djm7my7ncv477" path="res://Assets/Art/Characters/dead_character.png" id="7_yceqm"]
 [ext_resource type="PackedScene" uid="uid://dat407rq47iw" path="res://Objects/spikes.tscn" id="8_vseru"]
 
 [node name="game_level_2" type="Node2D"]
@@ -567,3 +568,7 @@ position = Vector2(1272, -56)
 
 [node name="spikes178" parent="." instance=ExtResource("8_vseru")]
 position = Vector2(1288, -56)
+
+[node name="dead_body" type="Sprite2D" parent="."]
+position = Vector2(56, -12)
+texture = ExtResource("7_yceqm")

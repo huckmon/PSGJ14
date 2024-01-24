@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv4g1y5p13233"]
+[gd_scene load_steps=5 format=3 uid="uid://bv4g1y5p13233"]
 
 [ext_resource type="Script" path="res://Objects/staircase.gd" id="1_7yoo2"]
 [ext_resource type="Texture2D" uid="uid://b8q6onj6san2b" path="res://Assets/Art/Objects/Staircase16Bit3.png" id="2_5827v"]
+[ext_resource type="AudioStream" uid="uid://cesxg03281unh" path="res://Assets/audio/stairs_sound.wav" id="3_aviap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pobe"]
 size = Vector2(13, 14)
@@ -15,5 +16,8 @@ texture = ExtResource("2_5827v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_7pobe")
+
+[node name="stairs_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_aviap")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

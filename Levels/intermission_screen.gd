@@ -6,6 +6,7 @@ var cooldown_over = false
 
 func _ready():
 	score.text = str(global_script.score) + "f"
+	$stairs_sound.play()
 	$intermission_timer.start()
 
 func _unhandled_key_input(event):
