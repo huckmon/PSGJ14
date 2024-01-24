@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://danf1m8w0kbh4"]
+[gd_scene load_steps=13 format=3 uid="uid://danf1m8w0kbh4"]
 
 [ext_resource type="Script" path="res://Objects/swarm_large.gd" id="1_358yx"]
 [ext_resource type="Texture2D" uid="uid://c3txuhc1sabkx" path="res://Assets/Art/Tilemap/SwarmStandinSingle.png" id="1_nlrb6"]
 [ext_resource type="Shader" path="res://Objects/swarm_large.gdshader" id="2_mv1u5"]
+[ext_resource type="AudioStream" uid="uid://cvoxtp4m5vl6x" path="res://Assets/audio/swarm_rumble.mp3" id="4_lhxcf"]
 
 [sub_resource type="Gradient" id="Gradient_st7uk"]
 offsets = PackedFloat32Array(0.422969, 0.994398, 1)
@@ -73,3 +74,9 @@ shape = SubResource("RectangleShape2D_qlbu2")
 libraries = {
 "": SubResource("AnimationLibrary_orlx7")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lhxcf")
+volume_db = -0.5
+autoplay = true
+attenuation = 8.0

@@ -432,6 +432,8 @@ parameters/Dead_Idle/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(-0.0163522, 0.964317)
 parameters/Walk/blend_position = Vector2(0, 0)
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
