@@ -58,8 +58,9 @@ func pick_new_state():
 var in_swarm = false
 var player_damage_cooldown = true
 func _on_player_hitbox_body_entered(body):
-	if body.has_method("swarm_char") or body.has_method("spikes"):
+	if body.has_method("swarm_char") or body.has_method("spikes") or body.has_method("enemy"):
 		in_swarm = true
+		print("dead")
 
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("swarm_char"):

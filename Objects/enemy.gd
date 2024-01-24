@@ -26,13 +26,13 @@ func enemy():
 
 func _physics_process(delta):
 	if player_visable and !dashing and !dash_cooldown and !wait_for_timer:
-		print("player detection")
+		#print("player detection")
 		state_machine.travel("detection")
 		can_dash = true
 		wait_for_timer = true
 		$detection_timer.start()
 	elif dashing and !dash_cooldown and can_dash:
-		print("dashing")
+		#print("dashing")
 		dash()
 	#print(dashing, " ", dash_cooldown, " ", can_dash)
 	#elif !dashing and dash_cooldown:
@@ -47,17 +47,17 @@ func dash():
 		dash_cooldown = false
 		dashing = false
 		can_dash = false
-		print(dashing, dash_cooldown, " func")
+		#print(dashing, dash_cooldown, " func")
 
 func _on_detection_hitbox_body_entered(body):
 	if body.has_method("player"):
-		print("yes player")
+		#print("yes player")
 		player = body
 		player_visable = true
 
 func _on_detection_hitbox_body_exited(body):
 	if body.has_method("player"):
-		print("no player")
+		#print("no player")
 		player_visable = false
 
 func _on_detection_timer_timeout():
