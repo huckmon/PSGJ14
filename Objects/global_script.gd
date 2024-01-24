@@ -37,7 +37,7 @@ func update_level():
 
 func floor_reset():
 	score = 0
-	current_floor = 0
+	current_floor = 1
 
 #func _ready():
 	#print(score_count)
