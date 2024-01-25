@@ -27,11 +27,7 @@ func update_level():
 	elif current_floor == 7:
 		next_floor = "res://Levels/game_level_7.tscn"
 	elif current_floor == 8:
-		next_floor = "res://Levels/game_level_8.tscn"
-	elif current_floor == 9:
-		next_floor = "res://Levels/game_level_9.tscn"
-	elif current_floor == 10:
-		next_floor = "res://Levels/game_level_10.tscn"
+		next_floor = "res://Levels/final_screen.tscn"
 	#else:
 		#next_floor = "procedural floor"
 
@@ -41,6 +37,3 @@ func floor_reset():
 
 #func _ready():
 	#print(score_count)
-
-# swarm spawn
-

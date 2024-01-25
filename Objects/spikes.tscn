@@ -107,6 +107,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spike_sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_72lox")
+}],
+"times": PackedFloat32Array(0.02)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_a6f1m"]
 resource_name = "spikes_retract"
@@ -334,7 +349,7 @@ parameters/spikes_retracting/blend_position = Vector2(0, 0)
 wait_time = 0.5
 
 [node name="spike_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_72lox")
 
 [connection signal="body_entered" from="spike_activation" to="." method="_on_spike_activation_body_entered"]
+[connection signal="body_exited" from="spike_activation" to="." method="_on_spike_activation_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
