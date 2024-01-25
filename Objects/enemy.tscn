@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://d1k677sekqj7w"]
+[gd_scene load_steps=24 format=3 uid="uid://d1k677sekqj7w"]
 
 [ext_resource type="Script" path="res://Objects/enemy.gd" id="1_18511"]
 [ext_resource type="Texture2D" uid="uid://cmcrh5detdhvl" path="res://Assets/Art/Characters/enemy.png" id="2_ejskk"]
+[ext_resource type="AudioStream" uid="uid://cns28mynr6uc2" path="res://Assets/audio/flash_sound3.wav" id="3_siem3"]
+[ext_resource type="AudioStream" uid="uid://beykbsmbxfb2g" path="res://Assets/audio/dash_sfx.wav" id="4_p22j4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nf433"]
 radius = 8.0
@@ -25,6 +27,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 2, 0, 2, 0, 2]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("flash_sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_siem3")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_bo5qf"]
 resource_name = "dormant"
@@ -108,7 +125,7 @@ transitions = ["Start", "dormant", SubResource("AnimationNodeStateMachineTransit
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 18
-collision_mask = 19
+collision_mask = 18
 script = ExtResource("1_18511")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -119,7 +136,7 @@ hframes = 4
 shape = SubResource("CircleShape2D_nf433")
 
 [node name="detection_hitbox" type="Area2D" parent="."]
-collision_layer = 17
+collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_hitbox"]
@@ -143,6 +160,11 @@ parameters/dormant/blend_position = Vector2(0, 0)
 wait_time = 0.38
 
 [node name="dash_cooldown" type="Timer" parent="."]
+
+[node name="flash_sfx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="dash_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p22j4")
 
 [connection signal="body_entered" from="detection_hitbox" to="." method="_on_detection_hitbox_body_entered"]
 [connection signal="body_exited" from="detection_hitbox" to="." method="_on_detection_hitbox_body_exited"]

@@ -13,6 +13,7 @@ var dashing = false
 var dash_cooldown = false
 var can_dash = false
 var wait_for_timer = false
+var dash_sfx = false
 var player
 var enemy_pos
 var player_pos
@@ -41,12 +42,17 @@ func _physics_process(delta):
 
 func dash():
 	state_machine.travel("dormant")
-	if round(position) != round(player_pos):
+	if round(position) != round(player_pos) and !dash_sfx:
+		position += (player_pos - position)/speed
+		dash_sfx = true
+		$dash_sfx.play()
+	elif round(position) != round(player_pos) and dash_sfx:
 		position += (player_pos - position)/speed
 	elif round(position) == round(player_pos):
 		dash_cooldown = false
 		dashing = false
 		can_dash = false
+		dash_sfx = false
 		#print(dashing, dash_cooldown, " func")
 
 func _on_detection_hitbox_body_entered(body):
