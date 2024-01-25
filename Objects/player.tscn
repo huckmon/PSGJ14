@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Objects/player.gd" id="1_s4nj4"]
 [ext_resource type="Texture2D" uid="uid://h4xok4ahktce" path="res://Assets/Art/Characters/player.png" id="2_s4wkn"]
-[ext_resource type="AudioStream" uid="uid://cea8enu5xw1rp" path="res://Assets/audio/male_hurt7-48124-echo.wav" id="3_tdllm"]
-[ext_resource type="AudioStream" uid="uid://f4v3o1ekr5jp" path="res://Assets/audio/player_walk.wav" id="4_x5t2u"]
+[ext_resource type="AudioStream" uid="uid://bg0wig0p7jvn0" path="res://Assets/audio/male_hurt7-48124.mp3" id="3_lqs1h"]
+[ext_resource type="AudioStream" uid="uid://c3pkf3s2ecywx" path="res://Assets/audio/player_walk_sfx.wav" id="4_1ye6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpstb"]
 size = Vector2(12, 16.05)
@@ -153,9 +153,9 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_x5t2u")
+"stream": ExtResource("4_1ye6w")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 tracks/1/use_blend = true
 
@@ -185,9 +185,9 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_x5t2u")
+"stream": ExtResource("4_1ye6w")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 tracks/1/use_blend = true
 
@@ -217,9 +217,9 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_x5t2u")
+"stream": ExtResource("4_1ye6w")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 tracks/1/use_blend = true
 
@@ -249,9 +249,9 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_x5t2u")
+"stream": ExtResource("4_1ye6w")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.1)
 }
 tracks/1/use_blend = true
 
@@ -411,7 +411,7 @@ shape = SubResource("RectangleShape2D_eeec2")
 [node name="death_timer" type="Timer" parent="."]
 
 [node name="hurt_player" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_tdllm")
+stream = ExtResource("3_lqs1h")
 volume_db = 3.193
 
 [node name="player_walk" type="AudioStreamPlayer2D" parent="."]
